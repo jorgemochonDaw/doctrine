@@ -1,0 +1,15 @@
+{
+    "name": "jorgemochonbernal/doctrine",
+    "authors": [
+        {
+            "name": "jorgemochonDaw",
+            "email": "bernalmochonjorge@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.11",
+        "irap/autoloader": "^2.0",
+        "symfony/cache": "^6.0",
+        "doctrine/annotations": "^1.13"
+    }
+}

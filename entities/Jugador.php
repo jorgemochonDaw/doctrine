@@ -8,20 +8,19 @@
 class Jugador
 {
     /** @Id @Column(type="integer") @GeneratedValue **/
-    protected $id;
+    public $id;
 
     /** @Column(type="string") **/
-    protected $nombre;
+    public $nombre;
 
     /** @Column(type="string") **/
-    protected $apellidos;
+    public $apellidos;
 
     /** @Column(type="integer") **/
-    protected $edad;
+    public $edad;
 
     /** @Column(type="string") **/
-    protected $equipo;
-
+    public $equipo;
 
     public function __construct(string $nombre, string $apellidos, int $edad, string $equipo)
     {

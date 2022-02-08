@@ -7,29 +7,31 @@
 
 class Equipo
 {
-    /** @Id @Column(type="integer") @GeneratedValue **/
-    protected $id;
+    /** 
+     * @Id @Column(type="integer",nullable="false") 
+     * @GeneratedValue 
+     **/
+    public $id;
 
-    /** @Column(type="string") **/
-    protected $nombre;
+    /** 
+     * @Column(type="string") 
+     **/
+    public $nombre;
 
-    /** @Column(type="string") **/
-    protected $fundacion;
+    /** 
+     * @Column(type="string") 
+     **/
+    public $fundacion;
 
-    /** @Column(type="integer") **/
-    protected $socios;
+    /** 
+     * @Column(type="integer") 
+     **/
+    public $socios;
 
-    /** @Column(type="string") **/
-    protected $ciudad;
-
-
-    public function __construct(string $nombre, string $fundacion, int $socios, string $ciudad)
-    {
-        $this->nombre = $nombre;
-        $this->fundacion = $fundacion;
-        $this->socios = $socios;
-        $this->ciudad = $ciudad;
-    }
+    /** 
+     * @Column(type="string") 
+     **/
+    public $ciudad;
 
     /**
      * Get id.
@@ -40,7 +42,7 @@ class Equipo
     {
         return $this->id;
     }
-
+    
     /**
      * Set nombre.
      *

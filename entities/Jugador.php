@@ -7,28 +7,31 @@
 
 class Jugador
 {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /** 
+     * @Id @Column(type="integer",nullable="false") @GeneratedValue 
+     **/
     public $id;
 
-    /** @Column(type="string") **/
+    /** 
+     * @Column(type="string") 
+     **/
     public $nombre;
 
-    /** @Column(type="string") **/
+    /**
+     *  @Column(type="string") 
+     **/
     public $apellidos;
 
-    /** @Column(type="integer") **/
+    /** 
+     * @Column(type="integer") 
+     **/
     public $edad;
 
-    /** @Column(type="string") **/
+    /** 
+     * @ManyToOne(targetEntity="Equipo")
+     * @JoinColumn(name="equipo",referencedColumnName="id")
+     **/
     public $equipo;
-
-    public function __construct(string $nombre, string $apellidos, int $edad, string $equipo)
-    {
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->edad = $edad;
-        $this->equipo = $equipo;
-    }
 
     /**
      * Get id.
@@ -122,7 +125,6 @@ class Jugador
     public function setEquipo($equipo)
     {
         $this->equipo = $equipo;
-
         return $this;
     }
 

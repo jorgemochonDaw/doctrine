@@ -1,23 +1,28 @@
 <?php
 require_once(__DIR__ . '/../bootstrap.php');
-require_once(__DIR__ . '/mostrarJugadores.php');
-require_once(__DIR__ . '/createJugador.php');
+require_once(__DIR__ . '/mostrarEquipos.php');
 
-if (isset($_POST['crearJugador'])) {
-    $jugador = new Jugador(
-        $_POST['nombre'],
-        $_POST['apellido'],
-        $_POST['edad'],
-        $_POST['equipo']
-    );
-    $entityManager->persist($jugador);
+if (isset($_POST['eliminarEquipo'])) {
+    echo 's';
+    $id = $_POST['id'];
+    $equipo = $entityManager->find('Jugador', $id);
+    var_dump($equipo);
+    $entityManager->remove($equipo);
     $entityManager->flush();
-    echo "Jugador creado " . $jugador->getId()
-        . " " . $jugador->getNombre()
-        . " " . $jugador->getApellidos()
-        . " " . $jugador->getEdad()
-        . " " . $jugador->getEquipo();
+    echo $equipo->nombre . ' eliminado';
 }
+
+if (isset($_POST['actualizarEquipo'])) {
+    $actualizarEquipo = $entityManager->getReference('Equipo', $_POST['id']);
+    $actualizarEquipo->setNombre($_POST['nombre']);
+    $actualizarEquipo->setFundacion($_POST['fundacion']);
+    $actualizarEquipo->setSocios($_POST['socios']);
+    $actualizarEquipo->setCiudad($_POST['ciudad']);
+    $entityManager->flush();
+    echo 'Equipo actualizado';
+}
+
+require_once(__DIR__ . '/createJugador.php');
 
 if (isset($_POST['eliminarJugador'])) {
     $id = $_POST['id'];
@@ -32,7 +37,9 @@ if (isset($_POST['actualizarJugador'])) {
     $actualizarJugador->setNombre($_POST['nombre']);
     $actualizarJugador->setApellidos($_POST['apellido']);
     $actualizarJugador->setEdad($_POST['edad']);
-    $actualizarJugador->setEquipo($_POST['equipo']);
     $entityManager->flush();
     echo 'Jugador actualizado';
 }
+
+
+
